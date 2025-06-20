@@ -10,7 +10,7 @@
     @yield('content')
     <header class="bg-black text-white p-4 border-b-1 border-gray-500">
         <div class="container mx-auto flex justify-between items-center w-3/4">
-            <a href="/"><h1 class="text-3xl font-bold underline">Logo</h1></a>
+            <a href="/"><h1 class="text-3xl font-bold underline">GetRekt</h1></a>
             <div class="hidden md:flex">
                 <input type="text" placeholder="Search" class="rounded-md p-2 border-b-2 border-white focus:outline-none focus:border-black">
                 <button class="bg-white text-black rounded-md p-2 cursor-pointer">Search</button>
@@ -22,12 +22,19 @@
                     <li><a href="/contact" class="hover:text-blue-300 transition-colors duration-300">Contact</a></li>
                 </ul>
                 <a href="https://github.com/"><img src="{{ asset('images/github2.png') }}" alt="Logo" class="w-10 h-10 cursor-pointer"></a>
+                @php
+                    $latestUser = \App\Models\CustomizeUsers::latest()->first();
+                @endphp
+                @if($latestUser)
+                    <span class="text-gray-400 mr-2">{{ $latestUser->name }}</span>
+                @endif
             </nav>
             <div class="md:hidden flex items-center">
                 <button class="text-white cursor-pointer w-10 h-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
+                    
                 </button>
             </div>
         </div>
